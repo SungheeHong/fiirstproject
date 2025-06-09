@@ -1,10 +1,4 @@
 import streamlit as st
-import warnings
-import logging
-
-# 🚫 경고 숨기기
-warnings.filterwarnings("ignore")
-logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 
 # 🎬 타이틀
 st.title("🤖🌱 AI로 만드는 지속가능한 미래")
