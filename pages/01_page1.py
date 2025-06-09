@@ -61,15 +61,15 @@ if selected:
     # 🧠 퀴즈 버튼
     if st.button("🧠 나 퀴즈 낼래!"):
         st.info("❓ 문제: AI가 작물 질병을 예측하는 데 도움이 되는 SDG는 무엇일까?")
-        st.markdown("- A) SDG 4  
-- B) SDG 2  
-- C) SDG 6  
-- D) SDG 13")
+        st.markdown("""
+        - A) SDG 4  
+        - B) SDG 2  
+        - C) SDG 6  
+        - D) SDG 13
+        """)
         answer = st.radio("정답을 골라봐!", ["A", "B", "C", "D"], index=0)
         if answer == "B":
             st.success("🎉 정답! AI는 식량 문제 해결에 큰 역할을 해!")
             st.balloons()
         else:
             st.error("🙅‍♂️ 아쉬워! 다시 생각해봐~ 정답은 SDG 2야!")
-
-
