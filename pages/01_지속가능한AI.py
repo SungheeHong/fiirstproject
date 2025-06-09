@@ -1,4 +1,10 @@
 import streamlit as st
+import warnings
+import logging
+
+# 🚫 경고 숨기기
+warnings.filterwarnings("ignore")
+logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 
 # 🎈 첫 진입 풍선 효과
 st.balloons()
@@ -16,7 +22,7 @@ AI는 **지속가능한 개발 목표(SDGs)** 달성에 큰 힘이 돼! 🌍
 까지 알려줄게!  
 """)
 
-# 🌱 SDG 목록 (이름, 설명, 사례, 이미지 URL)
+# 🌱 SDG 정보 (이름, 설명, 사례, 이미지 URL)
 sdg_info = {
     "🎓 양질의 교육 (SDG 4)": {
         "ai_use": "AI 튜터, 학습 예측 모델, 학습 데이터 분석 등을 통해 교육 격차를 줄일 수 있어 📘🧠",
@@ -35,30 +41,24 @@ sdg_info = {
     },
     "🌍 기후 행동 (SDG 13)": {
         "ai_use": "기후 데이터 예측, 탄소 배출 추적, 에너지 사용 최적화에 AI가 활약 중! 🌡️🌳",
-        "example": "Google의 AI는 기상 패턴을 분석해서 풍력 에너지 예측에 활용되고 있어.",
+        "example": "Google의 AI는 기상 패턴을 분석해서 풍력 에너지를 예측에 활용되고 있어.",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sustainable_Development_Goal_13.png/240px-Sustainable_Development_Goal_13.png"
     },
 }
 
-# 📌 드롭다운으로 SDG 선택
+# 📌 선택형 SDG 드롭다운
 selected = st.selectbox("👉 알고 싶은 SDG를 골라봐!", [""] + list(sdg_info.keys()))
 
-# ✨ 선택 시 정보 보여주기
+# ✨ 선택한 SDG에 대한 정보 출력
 if selected:
     st.subheader(f"{selected}에 AI는 이렇게 쓰이고 있어!")
-    
-    # 🔍 AI 기여 설명
+
     st.markdown(f"🧠 **AI 역할:** {sdg_info[selected]['ai_use']}")
-
-    # 🧾 실제 사례
     st.markdown(f"📌 **사례:** {sdg_info[selected]['example']}")
-
-    # 🖼️ 이미지
-    st.image(sdg_info[selected]['image'], use_column_width=True, caption=f"{selected} 관련 이미지")
-
+    st.image(sdg_info[selected]['image'], use_container_width=True, caption=f"{selected} 관련 이미지")
     st.balloons()
 
-    # 🧠 퀴즈 버튼
+    # 🧠 퀴즈 버튼 및 로직
     if st.button("🧠 나 퀴즈 낼래!"):
         st.info("❓ 문제: AI가 작물 질병을 예측하는 데 도움이 되는 SDG는 무엇일까?")
         st.markdown("""
